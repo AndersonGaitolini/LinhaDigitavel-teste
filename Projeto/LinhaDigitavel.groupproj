@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{33CD9A7F-B80B-4C8E-A079-25BC864452C1}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="TestaLinhaDigitavel.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\Fontes\ORM\ORM.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\Fontes\CodeBar\Projeto\CodeBAR.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="TestaLinhaDigitavel">
+        <MSBuild Projects="TestaLinhaDigitavel.dproj"/>
+    </Target>
+    <Target Name="TestaLinhaDigitavel:Clean">
+        <MSBuild Projects="TestaLinhaDigitavel.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TestaLinhaDigitavel:Make">
+        <MSBuild Projects="TestaLinhaDigitavel.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ORM">
+        <MSBuild Projects="..\Fontes\ORM\ORM.dproj"/>
+    </Target>
+    <Target Name="ORM:Clean">
+        <MSBuild Projects="..\Fontes\ORM\ORM.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ORM:Make">
+        <MSBuild Projects="..\Fontes\ORM\ORM.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="CodeBAR">
+        <MSBuild Projects="..\Fontes\CodeBar\Projeto\CodeBAR.dproj"/>
+    </Target>
+    <Target Name="CodeBAR:Clean">
+        <MSBuild Projects="..\Fontes\CodeBar\Projeto\CodeBAR.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CodeBAR:Make">
+        <MSBuild Projects="..\Fontes\CodeBar\Projeto\CodeBAR.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="TestaLinhaDigitavel;ORM;CodeBAR"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="TestaLinhaDigitavel:Clean;ORM:Clean;CodeBAR:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="TestaLinhaDigitavel:Make;ORM:Make;CodeBAR:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
